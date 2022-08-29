@@ -7,7 +7,7 @@ I have created a microservice that will provide a RESTful API for managing posts
 
 ### Prerequisites
 
-You need to have installed [Python](https://www.python.org/downloads/), [VScode](https://code.visualstudio.com/Download), [Postgresql](https://www.postgresql.org/download/) and [Pgadmin](https://www.pgadmin.org/download/)
+You need to have installed [Python](https://www.python.org/downloads/), [VScode](https://code.visualstudio.com/Download), [PostgreSQL](https://www.postgresql.org/download/) and [PgAdmin](https://www.pgadmin.org/download/)
 
 
 ### Installing
