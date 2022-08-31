@@ -5,5 +5,5 @@ urlpatterns = [
     path('', views.get_routes),
     path("posts/", views.posts),
     path("posts/<str:pk>/", views.post),
-    path("posts/user/<str:pk>/", views.posts_user)
+    path("posts/users/<str:pk>/", views.posts_user),
 ]

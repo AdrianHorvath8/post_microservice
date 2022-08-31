@@ -1,17 +1,20 @@
-
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from posts.models import Post
-from .serializers import PostSerializer, PostSerializerUpdate
 import requests
+from rest_framework.decorators import api_view
 from rest_framework import status
+from rest_framework.response import Response
+from .serializers import PostSerializer, PostSerializerUpdate
 
 
 @api_view(["GET"])
 def get_routes(request):
     routes = [
         {"GET":"/api/posts"},
-        
+        {"POST":"/api/posts"},
+        {"GET":"/api/posts/id"},
+        {"PUT":"/api/posts/id"},
+        {"DELETE":"/api/posts/id"},
+        {"GET":"/api/posts/users/id"},
     ]
 
     return Response(routes)
@@ -20,13 +23,13 @@ def get_routes(request):
 @api_view(["GET","POST"])
 def posts(request):
 
-    if request.method=="GET":
+    if request.method == "GET":
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data)
 
     
-    if request.method=="POST":
+    if request.method == "POST":
         users_id = []
         users = requests.get("https://jsonplaceholder.typicode.com/users")
         users = users.json()
@@ -70,14 +73,14 @@ def post(request,pk):
                 )
                 serializer = PostSerializer(create_post, many=False)
             except:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
+                return Response(status=status.HTTP_404_NOT_FOUND)
 
 
     if request.method == "PUT":
         try:
             post = Post.objects.get(id=pk)
         except:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = PostSerializerUpdate(post, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -88,7 +91,7 @@ def post(request,pk):
         try:
             post = Post.objects.get(id=pk)
         except:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_404_NOT_FOUND)
         post.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -97,7 +100,13 @@ def post(request,pk):
 
 @api_view(["GET"])
 def posts_user(request,pk):
+    
     posts = Post.objects.filter(user_id = pk)
+    if posts.exists():
+        pass
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
     serializer = PostSerializer(posts, many=True)
 
     

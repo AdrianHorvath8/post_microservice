@@ -1,10 +1,8 @@
-
-from http import server
-from .forms import PostFormCreate, PostFormUpdate
-from django.shortcuts import render, redirect
-import requests
-from django.http import HttpResponse
 from django.db.models import Q
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from .forms import PostFormCreate, PostFormUpdate
+import requests
 
 
 from .models import Post

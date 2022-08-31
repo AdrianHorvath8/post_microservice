@@ -10,7 +10,9 @@
     <h2><a href="{% url 'post_create' %}">Create post</a></h2>
 
     {% for post in posts %}
-        
+        <p>
+            <label style="font-weight: bold;">Id: </label>{{ post.id }}
+        </p>
         <p>
             <label style="font-weight: bold;" >User Id: </label>{{ post.user_id }}
         </p>
