@@ -60,7 +60,7 @@ I use [Git](https://git-scm.com/) for versioning
 
 ## Links
 
-*  [API documentation](https://documenter.getpostman.com/view/18653876/UzXKXJxA)
+*  [API documentation](https://documenter.getpostman.com/view/18653876/VUxNSnxP)
  
 
 ## Authors
