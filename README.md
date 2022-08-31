@@ -18,6 +18,7 @@ You need to have installed [Python](https://www.python.org/downloads/), [VScode]
   * 2 - python -m venv .venv
   * 3 - source .venv/Scripts/activate
 * pip install -r requirements.txt
+* open project in VScode with **code .**  command
 * set up your postgresql database
 * put information about your database into the settings.py
 ```python
