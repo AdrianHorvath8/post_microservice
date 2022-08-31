@@ -51,7 +51,7 @@ DATABASES = {
 * Seach posts by Id or userId
 * Delete posts
 * Update posts
-* Catching from 3rd party API
+* Catching posts from 3rd party API
 
 
 ## Versioning
